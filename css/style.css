@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-size: 1rem;
+    font-family: 'Varela Round', sans-serif;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container {
+    background: linear-gradient( 180deg, #fc466b 0%, #3f5efb 100%);
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-around;
+}
+
+main {
+    height: 100%;
+    margin-top: 1em;
+}
+
+.control-box {
+    background-color: antiquewhite;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.canvas-container {
+    border: 1px solid black;
+    background: linear-gradient( 180deg, #fc466b 0%, #3f5efb 100%);
+}
+
+button,
+.btn {
+    border: 2px solid aqua;
+    border-radius: 2px;
+    padding: 7px;
+    margin: 3px;
+}
+
+@media (min-width: 1224px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 10px 10px;
+        grid-template-areas: 'header header' 'my-canvas text-line' 'my-canvas move' 'my-canvas text-features' 'my-canvas example-imgs' 'my-canvas share-download';
+    }
+    .my-canvas {
+        grid-area: my-canvas;
+    }
+    .share-download {
+        grid-area: share-download;
+    }
+    .example-imgs {
+        grid-area: example-imgs;
+    }
+    .text-features {
+        grid-area: text-features;
+    }
+    .move {
+        grid-area: move;
+    }
+    .text-line {
+        grid-area: text-line;
+    }
+    .header {
+        grid-area: header;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, onInitial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <title>Meme generator</title>
+</head>
+
+<body onload="onInit()">
+    <div class="main-container flex-col">
+        <!--HEADER-->
+        <header>
+            <div class="logo">
+                <h1><a href="#">Your MEME, such WOW</a></h1>
+                <!-- <svg viewBox="0 0 450 50">
+					<text y="50">Your MEME, such WOW</text>
+				</svg> -->
+            </div>
+            <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+            <label for="openSidebarMenu" class="sidebarIconToggle">
+				<div class="spinner diagonal part-1"></div>
+				<div class="spinner horizontal"></div>
+				<div class="spinner diagonal part-2"></div>
+			</label>
+            <div id="sidebarMenu">
+                <ul class="sidebarMenuInner">
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!--MAIN-->
+        <main>
+            <div class="gallery-container">Gallery</div>
+            <!--Controls-->
+            <div class="control-box">
+                <div class="text-input">
+                    <input type="text" class="text-input" placeholder="Line 1: your text here..." onkeydown="drawText(this, 0)">
+                    <input type="text" class="text-input" placeholder="Line 2: your text here..." onkeydown="drawText(this, 1)">
+                    <button class="btn" onclick="onRowUp()">&#8593;</button>
+                    <button class="btn" onclick="onRowDown()">&darr;</button>
+                    <label for="text-color">text color:</label>
+                    <input type="color" class="text-color" onchange="onSetColor()" value="#ebeaea">
+                    <label for="ouline-color">outline color:</label>
+                    <input type="color" class="ouline-color" onchange="onSetColor()" value="#141414">
+                    <button calss="btn font-size" onclick="onIncreaseFont()">A+</button>
+                    <button calss="btn font-size" onclick="onDecreaseFont()">A-</button>
+                    <button calss="btn justify-R" onclick="onAlignR()">align R</button>
+                    <button calss="btn justify-L" onclick="onAlignL()">align L</button>
+                    <select name="font-fam" onchange="onSetFont(this.value)">
+						<option value="font">Font</option>
+						<option value="impact">Impact</option>
+						<option value="arial">Arial</option>
+						<option value="roboto">Roboto</option>
+					</select>
+                </div>
+                <button onclick="clearCanvas()">Clear canvas</button>
+
+
+                <!--Upload and share-->
+                <div class="inputs">
+                    <input type="file" class="file-input" name="image" onchange="onImgInput(event)" />
+
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="btn" type="submit">Share</button>
+                        <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download masterpiece</a>
+                        <div class="share-container"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <!--render from js, make it a grid-->
+            </div>
+            <!-- CANVAS -->
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="250" width="250" style="outline:1px solid black">
+					Sorry, your browser sucks and doesn't support canvas
+				</canvas>
+            </div>
+        </main>
+        <script src="js/meme-service.js"></script>
+        <script src="js/meme-controller.js"></script>
+        <script src="js/upload-service.js"></script>
+
+
+</body>
+
+</html>
