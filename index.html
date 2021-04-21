@@ -15,7 +15,7 @@
         <!--HEADER-->
         <header>
             <div class="logo">
-                <h1><a href="#">Your MEME, such WOW</a></h1>
+                <h1><a href="index.html">Your MEME, such WOW</a></h1>
                 <!-- <svg viewBox="0 0 450 50">
 					<text y="50">Your MEME, such WOW</text>
 				</svg> -->
@@ -37,7 +37,7 @@
         </header>
         <!--MAIN-->
         <h4>Choose your meme:</h4>
-        <div class="gallery-container gallery flex" onclick="onToggleGallery('hide')">Gallery</div>
+        <div class="gallery-container gallery flex">Gallery</div>
         <main class="main flex-col">
             <!--Controls-->
             <div class="control-box">
@@ -47,9 +47,9 @@
                     <button class="btn" onclick="onRowUp()">&#8593;</button>
                     <button class="btn" onclick="onRowDown()">&darr;</button>
                     <label for="text-color">text color:</label>
-                    <input type="color" class="text-color" onchange="onSetColor()" value="#ebeaea">
+                    <input type="color" class="text-color" onchange="onSetColor(this)" value="#ebeaea">
                     <label for="ouline-color">outline color:</label>
-                    <input type="color" class="ouline-color" onchange="onSetColor()" value="#141414">
+                    <!-- <input type="color" class="ouline-color" onchange="onSetColor()" value="#141414"> -->
                     <button calss="btn font-size" onclick="onIncreaseFont()">A+</button>
                     <button calss="btn font-size" onclick="onDecreaseFont()">A-</button>
                     <button calss="btn justify-R" onclick="onAlignR()">align R</button>
@@ -58,7 +58,7 @@
 						<option value="font">Font</option>
 						<option value="Impact">Impact</option>
 						<option value="Arial">Arial</option>
-						<option value="Roboto">Roboto</option>
+						<option value="Comic Sans MS">Comic</option>
 					</select>
                 </div>
                 <button onclick="clearCanvas()">Clear Canvas</button>

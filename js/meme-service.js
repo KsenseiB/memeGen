@@ -51,7 +51,7 @@ var gMeme = {
             family: 'Impact',
             align: 'center',
             color: 'red',
-            posX: 50,
+            posX: 100,
             posY: 50
         },
         {
@@ -60,7 +60,7 @@ var gMeme = {
             family: 'Impact',
             align: 'center',
             color: 'red',
-            posX: 50,
+            posX: 100,
             posY: 150
         }
     ]
@@ -77,19 +77,21 @@ function getImgs() {
 function drawImg(idx) {
     let img = new Image();
     img.src = gImgs[idx].url;
+    console.log(img.src)
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
 }
 
-function onChangesize(action) {
+
+function onChangeSize(action) {
     let fontSize = gMeme.lines[gMeme.selectedLineIdx].size;
     if (action === 'increase') {
-        fontSize += 3;
+        fontSize += 10;
     }
     if (action === 'decrease') {
         if (fontSize <= 4) return;
-        else fontSize -= 3;
+        else fontSize -= 10;
     }
     onDrawText();
 }
@@ -106,8 +108,17 @@ function showGallery() {
     var elMain = document.querySelector('.main');
     elGallery.style.display = ("flex");
     elMain.style.display = ("none");
+    clearCanvas();
 }
 
 function clearCanvas() {
+    gTextCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    clearTxtLine();
+}
+
+function clearTxtLine() {
+    let textBox = document.querySelectorAll('input[type=text]');
+    textBox[0].value = '';
+    textBox[1].value = '';
 }

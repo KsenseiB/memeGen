@@ -7,11 +7,9 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d');
     gTextCtx = gElTextCanvas.getContext('2d');
     drawImgFromlocal()
-    resizeCanvas();
+        // resizeCanvas();
     renderGallery();
 }
-
-
 
 function renderGallery() {
     let imgs = getImgs();
@@ -23,16 +21,15 @@ function renderGallery() {
 }
 
 function onIncreaseFont() {
-    onChangesize('increase');
+    onChangeSize('increase');
 }
 
 function onDecreaseFont() {
-    onChangesize('decrease');
+    onChangeSize('decrease');
 }
 
 function onDrawText(input, idx) {
-    // var canvasCenterX = gElCanvas.width / 2;
-    // var canvasCenterY = gElCanvas.height / 2;
+
     gTextCtx.clearRect(0, 0, gElTextCanvas.width, gElTextCanvas.height)
 
     gMeme.lines.forEach((line, index) => {
@@ -53,7 +50,7 @@ function onDrawText(input, idx) {
     })
 }
 
-function onSetColor() {
+function onSetColor(color) {
     var fillColor = document.querySelector('.text-color').value;
     console.log(fillColor)
     var oulineColor = document.querySelector('.ouline-color').value;
@@ -83,17 +80,6 @@ function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-function resizeCanvas() {
-    let elContainer = document.querySelector('.canvas-container')
-    gElTextCanvas.top = elContainer.offsetTop
-    gElTextCanvas.left = elContainer.offsetLeft + 50
-
-    gElCanvas.width = elContainer.offsetWidth
-    gElTextCanvas.width = gElCanvas.width
-    gElCanvas.height = elContainer.offsetHeight
-    gElTextCanvas.height = gElCanvas.height
-}
-
 
 function onToggleGallery(action) {
     if (action === 'hide') hideGallery();
@@ -106,28 +92,26 @@ function onRowUp() {}
 function onRowDown() {}
 
 function onDrawImg(imgId) {
-    console.log('onDrawImg, imgId:', imgId);
+    console.log('onDrawImg function - imgId:', imgId);
+    onToggleGallery('hide');
     drawImg(imgId);
 }
 
-
-
 function onSetFont(selectedFont) {
-    console.log(selectedFont)
+    // console.log(selectedFont)
+    let textBox = document.querySelectorAll('input[type=text]');
+    textBox.value = '';
     gMeme.lines[0].family = selectedFont;
     gMeme.lines[1].family = selectedFont;
 }
 
 function renderCanvas() {
-    gCtx.save()
-    gCtx.restore()
+
+    // gCtx.save()
+    // gCtx.restore()
 }
 
 // function resizeCanvas() {
-
-//     var canvas = document.getElementById('my-canvas');
-//     ctx = canvas.getContext('2d');
-
 //     var deviceWidth = window.innerWidth;;
 //     canvasWidth = Math.min(250, deviceWidth - 20);
 //     canvasHeight = Math.min(250, deviceWidth - 20);
