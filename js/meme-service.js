@@ -1,6 +1,8 @@
 'use strict';
 var gElCanvas;
+var gElTextCanvas;
 var gCtx;
+var gTextCtx;
 var gText;
 var gCurrLine;
 
@@ -44,7 +46,7 @@ var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [{
-            txt: 'Write something',
+            txt: '',
             size: 30,
             family: 'Impact',
             align: 'center',
@@ -73,14 +75,14 @@ function getImgs() {
 }
 
 function drawImg(idx) {
-    var img = new Image();
+    let img = new Image();
     img.src = gImgs[idx].url;
     img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
 }
 
-function changeFont(action) {
+function onChangesize(action) {
     let fontSize = gMeme.lines[gMeme.selectedLineIdx].size;
     if (action === 'increase') {
         fontSize += 3;
@@ -89,5 +91,23 @@ function changeFont(action) {
         if (fontSize <= 4) return;
         else fontSize -= 3;
     }
-    drawText();
+    onDrawText();
+}
+
+function hideGallery() {
+    var elGallery = document.querySelector('.gallery-container');
+    var elMain = document.querySelector('.main');
+    elGallery.style.display = ("none");
+    elMain.style.display = ("flex");
+}
+
+function showGallery() {
+    var elGallery = document.querySelector('.gallery-container');
+    var elMain = document.querySelector('.main');
+    elGallery.style.display = ("flex");
+    elMain.style.display = ("none");
+}
+
+function clearCanvas() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
 }

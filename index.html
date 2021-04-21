@@ -28,7 +28,7 @@
 			</label>
             <div id="sidebarMenu">
                 <ul class="sidebarMenuInner">
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#" onclick="onToggleGallery('show')">Gallery</a></li>
                     <li><a href="#">Memes</a></li>
                     <li><a href="#">About</a>
                     </li>
@@ -36,13 +36,14 @@
             </div>
         </header>
         <!--MAIN-->
-        <main>
-            <div class="gallery-container">Gallery</div>
+        <h4>Choose your meme:</h4>
+        <div class="gallery-container gallery flex" onclick="onToggleGallery('hide')">Gallery</div>
+        <main class="main flex-col">
             <!--Controls-->
             <div class="control-box">
                 <div class="text-input">
-                    <input type="text" class="text-input" placeholder="Line 1: your text here..." onkeydown="drawText(this, 0)">
-                    <input type="text" class="text-input" placeholder="Line 2: your text here..." onkeydown="drawText(this, 1)">
+                    <input type="text" class="text-input" placeholder="Line 1: your text here..." onkeydown="onDrawText(this, 0)">
+                    <input type="text" class="text-input" placeholder="Line 2: your text here..." onkeydown="onDrawText(this, 1)">
                     <button class="btn" onclick="onRowUp()">&#8593;</button>
                     <button class="btn" onclick="onRowDown()">&darr;</button>
                     <label for="text-color">text color:</label>
@@ -55,13 +56,12 @@
                     <button calss="btn justify-L" onclick="onAlignL()">align L</button>
                     <select name="font-fam" onchange="onSetFont(this.value)">
 						<option value="font">Font</option>
-						<option value="impact">Impact</option>
-						<option value="arial">Arial</option>
-						<option value="roboto">Roboto</option>
+						<option value="Impact">Impact</option>
+						<option value="Arial">Arial</option>
+						<option value="Roboto">Roboto</option>
 					</select>
                 </div>
-                <button onclick="clearCanvas()">Clear canvas</button>
-
+                <button onclick="clearCanvas()">Clear Canvas</button>
 
                 <!--Upload and share-->
                 <div class="inputs">
@@ -75,20 +75,19 @@
                     </form>
                 </div>
             </div>
-
-            <div class="gallery">
-                <!--render from js, make it a grid-->
-            </div>
             <!-- CANVAS -->
-            <div class="canvas-container">
-                <canvas id="my-canvas" height="250" width="250" style="outline:1px solid black">
-					Sorry, your browser sucks and doesn't support canvas
-				</canvas>
+            <div class="canvas-container" style="position: relative;">
+                <canvas id="my-canvas" height="250" width="250" style="outline:1px solid black; position: absolute;">
+                        Sorry, your browser sucks and doesn't support canvas
+                      </canvas>
+                <canvas id="text-canvas" height="250" width="250" style="position: absolute; z-index: 10;">
+                      </canvas>
             </div>
         </main>
-        <script src="js/meme-service.js"></script>
-        <script src="js/meme-controller.js"></script>
-        <script src="js/upload-service.js"></script>
+    </div>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/upload-service.js"></script>
 
 
 </body>
