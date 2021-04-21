@@ -36,24 +36,27 @@
             </div>
         </header>
         <!--MAIN-->
-        <h4>Choose your meme:</h4>
+        <h4 class="gallery-headline">Choose your meme:</h4>
         <div class="gallery-container gallery flex">Gallery</div>
         <main class="main flex-col">
             <!--Controls-->
             <div class="control-box">
                 <div class="text-input">
                     <input type="text" class="text-input" placeholder="Line 1: your text here..." onkeydown="onDrawText(this, 0)">
+                    <button class="btn" onclick="onRemoveLine(0)">remove</button>
                     <input type="text" class="text-input" placeholder="Line 2: your text here..." onkeydown="onDrawText(this, 1)">
+                    <button class="btn" onclick="onRemoveLine(1)">remove</button>
                     <button class="btn" onclick="onRowUp()">&#8593;</button>
                     <button class="btn" onclick="onRowDown()">&darr;</button>
                     <label for="text-color">text color:</label>
                     <input type="color" class="text-color" onchange="onSetColor(this)" value="#ebeaea">
                     <label for="ouline-color">outline color:</label>
-                    <!-- <input type="color" class="ouline-color" onchange="onSetColor()" value="#141414"> -->
-                    <button calss="btn font-size" onclick="onIncreaseFont()">A+</button>
-                    <button calss="btn font-size" onclick="onDecreaseFont()">A-</button>
-                    <button calss="btn justify-R" onclick="onAlignR()">align R</button>
-                    <button calss="btn justify-L" onclick="onAlignL()">align L</button>
+                    <input type="color" class="ouline-color" onchange="onSetColor()">
+                    <button class="btn font-size" onclick="onIncreaseFont()">A+</button>
+                    <button class="btn font-size" onclick="onDecreaseFont()">A-</button>
+                    <button class="btn justify-R" onclick="onAlign('R')">align R</button>
+                    <button class="btn justify-R" onclick="onAlign('C')">align C</button>
+                    <button class="btn justify-L" onclick="onAlign('L')">align L</button>
                     <select name="font-fam" onchange="onSetFont(this.value)">
 						<option value="font">Font</option>
 						<option value="Impact">Impact</option>

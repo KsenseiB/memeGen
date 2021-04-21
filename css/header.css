@@ -1,8 +1,3 @@
-header {
-    padding: 1em;
-    margin-top: 1em;
-}
-
 .logo a {
     color: #fff;
     outline-color: #000;
@@ -30,7 +25,6 @@ header {
 }
 
 #sidebarMenu {
-    /* height: 100%; */
     position: fixed;
     left: 0;
     width: 150px;

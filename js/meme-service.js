@@ -3,7 +3,6 @@ var gElCanvas;
 var gElTextCanvas;
 var gCtx;
 var gTextCtx;
-var gText;
 var gCurrLine;
 
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
@@ -51,7 +50,7 @@ var gMeme = {
             family: 'Impact',
             align: 'center',
             color: 'red',
-            posX: 100,
+            posX: 125,
             posY: 50
         },
         {
@@ -60,8 +59,8 @@ var gMeme = {
             family: 'Impact',
             align: 'center',
             color: 'red',
-            posX: 100,
-            posY: 150
+            posX: 125,
+            posY: 230
         }
     ]
 }
@@ -83,41 +82,36 @@ function drawImg(idx) {
     }
 }
 
-
-function onChangeSize(action) {
-    let fontSize = gMeme.lines[gMeme.selectedLineIdx].size;
-    if (action === 'increase') {
-        fontSize += 10;
-    }
-    if (action === 'decrease') {
-        if (fontSize <= 4) return;
-        else fontSize -= 10;
-    }
-    onDrawText();
+function align(alignVal) {
+    gMeme.lines[0].align = alignVal;
+    gMeme.lines[1].align = alignVal;
+    gTextCtx.textAlign = gMeme.lines.align;
 }
 
 function hideGallery() {
     var elGallery = document.querySelector('.gallery-container');
     var elMain = document.querySelector('.main');
-    elGallery.style.display = ("none");
-    elMain.style.display = ("flex");
+    elGallery.style.display = 'none';
+    elMain.style.display = 'flex';
+    document.querySelector('.gallery-headline').style.display = 'none';
 }
 
 function showGallery() {
     var elGallery = document.querySelector('.gallery-container');
     var elMain = document.querySelector('.main');
-    elGallery.style.display = ("flex");
-    elMain.style.display = ("none");
+    elGallery.style.display = ('flex');
+    elMain.style.display = 'none';
+    document.querySelector('.gallery-headline').style.display = 'block';
     clearCanvas();
 }
 
 function clearCanvas() {
     gTextCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-    clearTxtLine();
+    clearTxtBox();
 }
 
-function clearTxtLine() {
+function clearTxtBox() {
     let textBox = document.querySelectorAll('input[type=text]');
     textBox[0].value = '';
     textBox[1].value = '';
