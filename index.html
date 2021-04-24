@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, onInitial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="/css/media-queries.css">
     <title>Meme generator</title>
 </head>
 
@@ -16,9 +16,6 @@
         <header>
             <div class="logo">
                 <h1><a href="index.html">Your MEME, such WOW</a></h1>
-                <!-- <svg viewBox="0 0 450 50">
-					<text y="50">Your MEME, such WOW</text>
-				</svg> -->
             </div>
             <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
             <label for="openSidebarMenu" class="sidebarIconToggle">
@@ -28,43 +25,54 @@
 			</label>
             <div id="sidebarMenu">
                 <ul class="sidebarMenuInner">
+                    <li><a href="#">About</a></li>
                     <li><a href="#" onclick="onToggleGallery('show')">Gallery</a></li>
-                    <li><a href="#">Memes</a></li>
-                    <li><a href="#">About</a>
-                    </li>
+                    <li><a href="#">Your Memes</a></li>
                 </ul>
             </div>
         </header>
+
         <!--MAIN-->
-        <h4 class="gallery-headline">Choose your meme:</h4>
-        <div class="gallery-container gallery flex">Gallery</div>
-        <main class="main flex-col">
+        <div class="gallery-wrapper">
+            <h4 class="gallery-headline">Choose your meme:</h4>
+            <div class="gallery-container gallery flex">Gallery</div>
+        </div>
+        <main class="main flex-col hidden">
             <!--Controls-->
             <div class="control-box">
-                <div class="text-input">
-                    <input type="text" class="text-input" placeholder="Line 1: your text here..." onkeydown="onDrawText(this, 0)">
-                    <button class="btn" onclick="onRemoveLine(0)">remove</button>
-                    <input type="text" class="text-input" placeholder="Line 2: your text here..." onkeydown="onDrawText(this, 1)">
+                <div class="text-inputs">
+
+                    <input type="text" class="text-input" placeholder="Line 1: your text here..." onkeyup="onDrawText(this, 0)">
+                    <button class="btn" onclick="onRemoveLine(0)">remove</button><br>
+                    <input type="text" class="text-input" placeholder="Line 2: your text here..." onkeyup="onDrawText(this, 1)">
                     <button class="btn" onclick="onRemoveLine(1)">remove</button>
+                </div>
+                <!-- <button class="btn" onclick="onToggleLine()">Toggle</button> -->
+                <div class="move-line">
                     <button class="btn" onclick="onRowUp()">&#8593;</button>
                     <button class="btn" onclick="onRowDown()">&darr;</button>
-                    <label for="text-color">text color:</label>
-                    <input type="color" class="text-color" onchange="onSetColor(this)" value="#ebeaea">
-                    <label for="ouline-color">outline color:</label>
-                    <input type="color" class="ouline-color" onchange="onSetColor()">
-                    <button class="btn font-size" onclick="onIncreaseFont()">A+</button>
-                    <button class="btn font-size" onclick="onDecreaseFont()">A-</button>
                     <button class="btn justify-R" onclick="onAlign('R')">align R</button>
                     <button class="btn justify-R" onclick="onAlign('C')">align C</button>
                     <button class="btn justify-L" onclick="onAlign('L')">align L</button>
+                </div>
+                <div class="color-inputs">
+                    <label for="text-color">text color:</label>
+                    <input type="color" class="text-color" onchange="onSetColor('fill')" value="#ffffff">
+                    <label for="ouline-color">outline color:</label>
+                    <input type="color" class="ouline-color" onchange="onSetColor('outline')">
+                </div>
+                <div class="size">
+                    <button class="btn font-size" onclick="onIncreaseFont()">A+</button>
+                    <button class="btn font-size" onclick="onDecreaseFont()">A-</button>
+
                     <select name="font-fam" onchange="onSetFont(this.value)">
 						<option value="font">Font</option>
 						<option value="Impact">Impact</option>
 						<option value="Arial">Arial</option>
 						<option value="Comic Sans MS">Comic</option>
 					</select>
+                    <button onclick="clearCanvas()">Clear Canvas</button>
                 </div>
-                <button onclick="clearCanvas()">Clear Canvas</button>
 
                 <!--Upload and share-->
                 <div class="inputs">
@@ -77,20 +85,19 @@
                         <div class="share-container"></div>
                     </form>
                 </div>
+
             </div>
             <!-- CANVAS -->
             <div class="canvas-container" style="position: relative;">
                 <canvas id="my-canvas" height="250" width="250" style="outline:1px solid black; position: absolute;">
                         Sorry, your browser sucks and doesn't support canvas
-                      </canvas>
-                <canvas id="text-canvas" height="250" width="250" style="position: absolute; z-index: 10;">
-                      </canvas>
+                </canvas>
             </div>
         </main>
     </div>
     <script src="js/meme-service.js"></script>
-    <script src="js/meme-controller.js"></script>
     <script src="js/upload-service.js"></script>
+    <script src="js/meme-controller.js"></script>
 
 
 </body>
