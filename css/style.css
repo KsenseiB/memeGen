@@ -1,19 +1,114 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 * {
     box-sizing: border-box;
+    border-radius: 4px;
 }
 
 html,
 body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 body {
     font-size: 1rem;
     font-family: 'Varela Round', sans-serif;
     background: linear-gradient( 180deg, #fc466b 0%, #3f5efb 100%);
+    background-size: cover;
     /* margin: 0 auto; */
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+img {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    width: 20%;
+    transition: all .2s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px gray);
+}
+
+button,
+.btn {
+    border: 1px solid #8842d5;
+    padding: 5px;
+    margin: 5px;
+    outline: none;
+}
+
+button:hover {
+    background: #fff;
+    color: #bc5be3;
+}
+
+button:active {
+    background: #fff;
+    box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.32);
+}
+
+input[type='text'] {
+    border: none;
+    border-bottom: 3px solid #8842d5;
+}
+
+input[type='text']:focus {
+    outline: none;
+    border: 3px solid #8842d5;
+}
+
+select {
+    /* width: 80%; */
+    padding: 3px 8px;
+    border: 1px solid #8842d5;
+    border-radius: 5px;
+    color: #000;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+header {
+    margin-top: 1rem 1rem 0 1rem;
+}
+
+text {
+    fill: #fff;
+    stroke: #000;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+}
+
+#sidebarMenu ul li:hover {
+    transform: scale(1.1);
+}
+
+.logo {
+    margin-top: 3rem;
+}
+
+.logo a {
+    color: #fff;
+    outline-color: #000;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.menu-close {
+    display: hidden;
+}
+
+.sidebarMenuInner li a {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .flex {
@@ -23,35 +118,33 @@ body {
 .flex-col {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .main {
     display: none;
 }
 
-button,
-.btn {
-    border: 2px solid aqua;
-    border-radius: 4px;
-    padding: 7px;
-    margin: 3px;
-}
-
 .main-container {
     align-items: center;
-    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.gallery-wrapper {
+    text-align: center;
+    align-self: center;
 }
 
 .control-box {
-    background-color: antiquewhite;
-    padding: 1em;
-    margin: 0 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    margin: 0 1rem;
 }
 
 .canvas-container {
     border: 1px solid black;
-    background: linear-gradient( 180deg, #fc466b 0%, #3f5efb 100%);
-    margin: 1em auto;
+    background: rgba(255, 255, 255, 0.5);
     height: 250px;
     width: 250px;
 }
@@ -61,41 +154,21 @@ button,
     flex-wrap: wrap;
 }
 
-.gallery-container img {
-    width: 20%;
-    margin: 5px;
-    cursor: pointer;
+.upload-img {
+    align-items: center;
+    justify-content: space-between;
 }
 
+.file-input {
+    margin-left: 1rem;
+}
 
-/* 
-@media (min-width: 1224px) {
-    .main-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        gap: 10px 10px;
-        grid-template-areas: 'header header' 'my-canvas text-line' 'my-canvas move' 'my-canvas text-features' 'my-canvas example-imgs' 'my-canvas share-download';
-    }
-    .my-canvas {
-        grid-area: my-canvas;
-    }
-    .share-download {
-        grid-area: share-download;
-    }
-    .example-imgs {
-        grid-area: example-imgs;
-    }
-    .text-features {
-        grid-area: text-features;
-    }
-    .move {
-        grid-area: move;
-    }
-    .text-line {
-        grid-area: text-line;
-    }
-    .header {
-        grid-area: header;
-    }
-} */
+.download a {
+    text-decoration: none;
+    color: #000;
+}
+
+.download a:hover {
+    text-decoration: none;
+    color: #8842d5;
+}
