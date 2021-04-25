@@ -139,9 +139,11 @@
     }
     .main-container {
         width: 860px;
+        flex-wrap: wrap;
     }
     .main {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         gap: 2rem;
     }
